@@ -1,5 +1,6 @@
 import express from 'express';
-import { create, findAll, findByLogin, remove, update } from './src/users/users.controller.js';
+import './db.js';
+import * as usersController from './src/users/users.controller.js';
 
 const PORT = 3000;
 
@@ -24,11 +25,11 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/users', findAll);
-app.get('/users/:login', findByLogin);
-app.post('/users', create);
-app.put('/users/:login', update);
-app.delete('/users/:login', remove);
+app.get('/users', usersController.findAll);
+app.get('/users/:id', usersController.findById);
+app.post('/users', usersController.create);
+app.put('/users/:id', usersController.update);
+app.delete('/users/:id', usersController.remove);
 
 app.listen(PORT, () => {
     console.log('Server successfuly started on port ' + PORT);

@@ -1,84 +1,60 @@
-const USERS = [
-    {
-        login: 'user-test',
-        role: 'user',
-    },
-    {
-        login: 'user2-test',
-        role: 'user',
-    },
-    {
-        login: 'limited-user-test',
-        role: 'limited-user',
-    },
-    {
-        login: 'admin-test',
-        role: 'admin',
-    },
-];
+import * as usersService from "./users.service.js";
 
-export const findAll = (req, res) => {
-    return res.json(USERS);
-};
+export const findAll = async (req, res) => {
+    try {
+        const users = await usersService.getAllUsers();
 
-export const findByLogin = (req, res) => {
-    const login = req.params.login;
-
-    const user = USERS.find(user => user.login === login);
-
-    if(user === undefined) {
-        return res.status(404).json({
-            message: 'The user was not found'
-        });
+        return res.json(users);
+    } catch (error) {
+        return res.status(500).send(error);
     }
-
-    return res.json(user);
 };
 
-export const create = (req, res) => {
+export const findById = async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        const user = await usersService.getUserById(userId);
+
+        return res.json(user);
+    } catch (error) {
+        return res.status(500).send(error);
+    }
+};
+
+export const create = async (req, res) => {
     const userBody = req.body;
 
-    USERS.push({
-        login: userBody.login,
-        role: userBody.role,
-    });
+    try {
+        const user = await usersService.create(userBody);
 
-    return res.json(USERS[USERS.length - 1]);
+        return res.json(user);
+    } catch (error) {
+        return res.status(500).send(error);
+    }
 };
 
-export const update = (req, res) => {
-    const login = req.params.login;
-
-    const userId = USERS.findIndex(user => user.login === login);
-    
-    if (userId === -1) {
-        return res.status(404).json({
-            message: 'The user was not found'
-        });
-    }
-
+export const update = async (req, res) => {
+    const userId = req.params.id;
     const userBody = req.body;
 
-    USERS[userId] = {
-        ...USERS[userId],
-        role: userBody.role
-    };
+    try {
+        const user = await usersService.update(userId, userBody);
 
-    return res.json(USERS[userId]);
+        return res.json(user);
+    } catch (error) {
+        return res.status(500).send(error);
+    }
 };
 
-export const remove = (req, res) => {
-    const login = req.params.login;
+export const remove = async (req, res) => {
+    const userId = req.params.id;
 
-    const userId = USERS.findIndex(user => user.login === login);
+    try {
+        const user = await usersService.remove(userId);
 
-    if (userId === -1) {
-        return res.status(404).json({
-            message: 'The user was not found'
-        });
+        return res.json(user);
+    } catch (error) {
+        return res.status(500).send(error);
     }
-
-    USERS.splice(userId, 1);
-
-    return res.status(200).json();
 };
