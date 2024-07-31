@@ -1,6 +1,8 @@
 import express from 'express';
 import './db.js';
 import * as usersController from './src/users/users.controller.js';
+import { errorLogger } from './src/errors/middlewares/error-logger.middleware.js';
+import { standardErrorResponser } from './src/errors/middlewares/standard-error-responser.middleware.js';
 
 const PORT = 3000;
 
@@ -30,6 +32,9 @@ app.get('/users/:id', usersController.findById);
 app.post('/users', usersController.create);
 app.put('/users/:id', usersController.update);
 app.delete('/users/:id', usersController.remove);
+
+app.use(errorLogger);
+app.use(standardErrorResponser);
 
 app.listen(PORT, () => {
     console.log('Server successfuly started on port ' + PORT);
