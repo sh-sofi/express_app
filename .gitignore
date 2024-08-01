@@ -3,3 +3,9 @@ node_modules/
 
 # Database files
 test-db.db
+
+# Environment variables file
+.env
+
+# Editor settings
+.vscode/
