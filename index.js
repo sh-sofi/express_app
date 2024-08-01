@@ -1,10 +1,15 @@
 import express from 'express';
 import './db.js';
 import * as usersController from './src/users/users.controller.js';
+import * as authenticationController from './src/authentication/authentication.controller.js';
 import { errorLogger } from './src/errors/middlewares/error-logger.middleware.js';
 import { standardErrorResponser } from './src/errors/middlewares/standard-error-responser.middleware.js';
+import { authenticated } from './src/authentication/middlewares/authenticated.middleware.js';
+import { hasRole } from './src/authorization/middlewares/has-role.middleware.js';
+import { addCurrentUserIdToParams } from './src/authentication/middlewares/add-current-user-id-to-params.middleware.js';
+import { PUBLIC_PORT } from './config.js';
 
-const PORT = 3000;
+const PORT = PUBLIC_PORT;
 
 const app = express();
 
@@ -27,11 +32,15 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/users', usersController.findAll);
-app.get('/users/:id', usersController.findById);
-app.post('/users', usersController.create);
-app.put('/users/:id', usersController.update);
-app.delete('/users/:id', usersController.remove);
+app.post('/signin', authenticationController.signIn);
+app.post('/signup', authenticationController.signUp);
+
+app.get('/users/me', authenticated, hasRole('limited_user'), addCurrentUserIdToParams, usersController.findById);
+app.get('/users', authenticated, hasRole('admin'), usersController.findAll);
+app.get('/users/:id', authenticated, hasRole('admin'), usersController.findById);
+app.post('/users', authenticated, hasRole('admin'), usersController.create);
+app.put('/users/:id', authenticated, hasRole('admin'), usersController.update);
+app.delete('/users/:id', authenticated, hasRole('admin'), usersController.remove);
 
 app.use(errorLogger);
 app.use(standardErrorResponser);

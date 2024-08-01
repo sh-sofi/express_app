@@ -46,7 +46,7 @@ export const findByLogin = (login) => {
 
 export const create = (user) => {
     return new Promise((resolve, reject) => {
-        db.run('INSERT INTO users (login,role) VALUES(?, ?)', [user.login, user.role], (err) => {
+        db.run('INSERT INTO users (login,role,password_hash) VALUES(?, ?, ?)', [user.login, user.role, user.passwordHash], (err) => {
             if (err) {
                 reject(err);
                 return;

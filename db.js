@@ -18,7 +18,7 @@ export const db = new sqlite3.Database(dbPath, (err) => {
 });
 
 export const initDb = () => {
-    db.run("CREATE TABLE users (id INTEGER PRIMARY KEY, login TEXT UNIQUE, role TEXT);", (err) => {
+    db.run("CREATE TABLE users (id INTEGER PRIMARY KEY, login TEXT UNIQUE NOT NULL, role TEXT NOT NULL, password_hash TEXT NOT NULL);", (err) => {
         if (err) {
             console.error(err);
             return;
