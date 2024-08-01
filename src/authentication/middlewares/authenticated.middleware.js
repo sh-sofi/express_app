@@ -4,7 +4,7 @@ import { WEB_TOKEN_SECRET_KEY } from '../../../config.js';
 
 export const authenticated = (req, res, next) => {
     try {
-        const { token } = req.body;
+        const token = req.session.token;
     
         jsonwebtoken.verify(token, WEB_TOKEN_SECRET_KEY);
 

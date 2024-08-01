@@ -7,7 +7,10 @@ import { standardErrorResponser } from './src/errors/middlewares/standard-error-
 import { authenticated } from './src/authentication/middlewares/authenticated.middleware.js';
 import { hasRole } from './src/authorization/middlewares/has-role.middleware.js';
 import { addCurrentUserIdToParams } from './src/authentication/middlewares/add-current-user-id-to-params.middleware.js';
-import { PUBLIC_PORT } from './config.js';
+import { PUBLIC_PORT, SESSION_SECRET_KEY } from './config.js';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
+//import MongoStore from 'connect-mongo';
 
 const PORT = PUBLIC_PORT;
 
@@ -16,6 +19,22 @@ const app = express();
 app.set('view engine', 'ejs');
 
 app.use(express.json());
+
+app.use(cookieParser());
+
+// const sessionStore = MongoStore({
+//     mongoUrl: 'mongodb://localhost/your-database',
+//     collectionName: 'sessions',
+//     ttl: 60 * 60,
+// });
+
+app.use(session({
+    secret: SESSION_SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+    //store: sessionStore,
+}));
 
 app.use('/media', express.static('public'));
 

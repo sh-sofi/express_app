@@ -2,7 +2,7 @@ import jsonwebtoken from 'jsonwebtoken';
 
 export const addCurrentUserIdToParams = (req, res, next) => {
     try {
-        const { token } = req.body;
+        const token = req.session.token;
     
         const decoded = jsonwebtoken.decode(token);
 
