@@ -95,8 +95,6 @@ Here is a list of available endpoints in the project:
 | `PUT`           | `/users/:id` | Update user information                | `authenticated`, `hasRole`                             | `admin`           | `200 OK`, `400 Bad Request`, `403 Forbidden`, `404 Not Found` | Updates user data if the user exists.                 |
 | `DELETE`        | `/users/:id` | Delete a user by ID                    | `authenticated`, `hasRole`                             | `admin`           | `204 No Content`, `403 Forbidden`, `404 Not Found`            | Deletes a user from the database.                     |
 
----
-
 ## Features
 
 - **Session Management**: Secure user sessions with cookies.
@@ -104,13 +102,9 @@ Here is a list of available endpoints in the project:
 - **CRUD Operations**: Basic create, read, update, and delete functionality for user data.
 - **Middleware**: Includes custom and third-party middleware for enhancing functionality.
 
----
-
 ## Contributing
 
 This is a learning project, so contributions are not expected. However, feel free to fork and experiment with it. For suggestions or feedback, please open an issue.
-
----
 
 ## License
 
