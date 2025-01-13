@@ -2,8 +2,6 @@
 
 This is a basic project built with Express.js to demonstrate fundamental web application development techniques (CRUD operations, session-based authentication, and middleware integration for secure web application development) using Node.js.
 
----
-
 ## Table of Contents
 
 - [Instruction](#instruction)
@@ -13,8 +11,6 @@ This is a basic project built with Express.js to demonstrate fundamental web app
 - [Features](#features)
 - [Contributing](#contributing)
 - [License](#license)
-
----
 
 ## Instruction
 
@@ -56,8 +52,6 @@ Ensure you have the following installed on your system:
 
 5. Open Postman for testing the API.
 
----
-
 ## Technologies Used
 
 - **Node.js**: JavaScript runtime for server-side development.
@@ -70,15 +64,11 @@ Ensure you have the following installed on your system:
 - **jsonwebtoken**: Library for generating and verifying JSON Web Tokens.
 - **nodemon**: Development tool for automatic server restarts.
 
----
-
 ## Demo
 
 ![Home Page Screenshot](./public/express-app-postman.PNG)
 
 Note: This example contains test user data with hashed passwords. These are not real credentials and are used for demonstration purposes only.
-
----
 
 ## Endpoints
 
@@ -110,7 +100,7 @@ This is a learning project, so contributions are not expected. However, feel fre
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
----
+##
 
 Repository created during the course by ITVDN "Node.js Essential".
 
