@@ -9,3 +9,6 @@ test-db.db
 
 # Editor settings
 .vscode/
+
+# Log files
+*.log
