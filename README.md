@@ -74,7 +74,7 @@ Ensure you have the following installed on your system:
 
 ## Demo
 
-![Home Page Screenshot](./public/express-app-postman.png)
+![Home Page Screenshot](./public/express-app-postman.PNG)
 
 Note: This example contains test user data with hashed passwords. These are not real credentials and are used for demonstration purposes only.
 
@@ -119,4 +119,5 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ---
 
 Repository created during the course by ITVDN "Node.js Essential".
+
 Special thanks to the course instructor for guidance and learning materials. 🙌
