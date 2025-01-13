@@ -74,7 +74,7 @@ Ensure you have the following installed on your system:
 
 ## Demo
 
-![Home Page Screenshot](./public/screenshots/public/express-app-postman.png)
+![Home Page Screenshot](./public/express-app-postman.png)
 
 Note: This example contains test user data with hashed passwords. These are not real credentials and are used for demonstration purposes only.
 
