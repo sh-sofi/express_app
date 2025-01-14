@@ -85,6 +85,87 @@ Here is a list of available endpoints in the project:
 | `PUT`           | `/users/:id` | Update user information if the user exists                          | `authenticated`, `hasRole`                             | `admin`           | `200 OK`, `400 Bad Request`, `403 Forbidden`, `404 Not Found` |
 | `DELETE`        | `/users/:id` | Delete a user by ID                                                 | `authenticated`, `hasRole`                             | `admin`           | `204 No Content`, `403 Forbidden`, `404 Not Found`            |
 
+Here is a list of available endpoints in the project:
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center;"><b>HTTP Method</b></th>
+      <th style="text-align: center;"><b>Path</b></th>
+      <th><b>Description</b></th>
+      <th style="text-align: center;"><b>Middleware</b></th>
+      <th style="text-align: center;"><b>Required Role</b></th>
+      <th style="text-align: center;"><b>Expected Response Status</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center;">POST</td>
+      <td style="text-align: center;">/signin</td>
+      <td>User authentication. Returns an access token upon successful login.</td>
+      <td style="text-align: center;">-</td>
+      <td style="text-align: center;">-</td>
+      <td style="text-align: center;">200 OK, 401 Unauthorized</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">POST</td>
+      <td style="text-align: center;">/signup</td>
+      <td>Register a new user</td>
+      <td style="text-align: center;">-</td>
+      <td style="text-align: center;">-</td>
+      <td style="text-align: center;">201 Created, 400 Bad Request</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">GET</td>
+      <td style="text-align: center;">/users/me</td>
+      <td>Get information about the current user</td>
+      <td style="text-align: center;">authenticated, hasRole, addCurrentUserIdToParams</td>
+      <td style="text-align: center;">limited_user</td>
+      <td style="text-align: center;">200 OK, 403 Forbidden</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">GET</td>
+      <td style="text-align: center;">/users</td>
+      <td>Get a list of all users</td>
+      <td style="text-align: center;">authenticated, hasRole</td>
+      <td style="text-align: center;">admin</td>
+      <td style="text-align: center;">200 OK, 403 Forbidden</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">GET</td>
+      <td style="text-align: center;">/users/:id</td>
+      <td>Get user information by ID if the user exists</td>
+      <td style="text-align: center;">authenticated, hasRole</td>
+      <td style="text-align: center;">admin</td>
+      <td style="text-align: center;">200 OK, 403 Forbidden, 404 Not Found</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">POST</td>
+      <td style="text-align: center;">/users</td>
+      <td>Create a new user</td>
+      <td style="text-align: center;">authenticated, hasRole</td>
+      <td style="text-align: center;">admin</td>
+      <td style="text-align: center;">201 Created, 400 Bad Request</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">PUT</td>
+      <td style="text-align: center;">/users/:id</td>
+      <td>Update user information if the user exists</td>
+      <td style="text-align: center;">authenticated, hasRole</td>
+      <td style="text-align: center;">admin</td>
+      <td style="text-align: center;">200 OK, 400 Bad Request, 403 Forbidden, 404 Not Found</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">DELETE</td>
+      <td style="text-align: center;">/users/:id</td>
+      <td>Delete a user by ID</td>
+      <td style="text-align: center;">authenticated, hasRole</td>
+      <td style="text-align: center;">admin</td>
+      <td style="text-align: center;">204 No Content,<br>403 Forbidden,<br>404 Not Found</td>
+    </tr>
+  </tbody>
+</table>
+
 ## Features
 
 - **Session Management**: Secure user sessions with cookies.
