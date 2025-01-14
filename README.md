@@ -74,16 +74,16 @@ Note: This example contains test user data with hashed passwords. These are not 
 
 Here is a list of available endpoints in the project:
 
-| **HTTP Method** |   **Path**   |                           **Description**                           |                     **Middleware**                     | **Required Role** |                         **Expected Response Status**                         |
-| :-------------: | :----------: | :-----------------------------------------------------------------: | :----------------------------------------------------: | :---------------: | :--------------------------------------------------------------------------: |
-|     `POST`      |  `/signin`   | User authentication. Returns an access token upon successful login. |                           -                            |         -         |                      `200 OK`, `401&nbsp;Unauthorized`                       |
-|     `POST`      |  `/signup`   |                         Register a new user                         |                           -                            |         -         |                       `201 Created`, `400 Bad Request`                       |
-|      `GET`      | `/users/me`  |               Get information about the current user                | `authenticated`, `hasRole`, `addCurrentUserIdToParams` |  `limited_user`   |                        `200 OK`, `403&nbsp;Forbidden`                        |
-|      `GET`      |   `/users`   |                       Get a list of all users                       |               `authenticated`, `hasRole`               |      `admin`      |                        `200 OK`, `403&nbsp;Forbidden`                        |
-|      `GET`      | `/users/:id` |            Get user information by ID if the user exists            |               `authenticated`, `hasRole`               |      `admin`      |          `200 OK`, `403&nbsp;Forbidden`, `404&nbsp;Not&nbsp;Found`           |
-|     `POST`      |   `/users`   |                          Create a new user                          |               `authenticated`, `hasRole`               |      `admin`      |                  `201 Created`, `400&nbsp;Bad&nbsp;Request`                  |
-|      `PUT`      | `/users/:id` |             Update user information if the user exists              |               `authenticated`, `hasRole`               |      `admin`      | `200 OK`, `400 Bad Request`, `403&nbsp;Forbidden`, `404&nbsp;Not&nbsp;Found` |
-|    `DELETE`     | `/users/:id` |                         Delete a user by ID                         |               `authenticated`, `hasRole`               |      `admin`      |      `204 No Content`, `403&nbsp;Forbidden`, `404&nbsp;Not&nbsp;Found`       |
+| **HTTP Method** |   **Path**   |                           **Description**                           |                     **Middleware**                     | **Required Role** |                 **Expected Response Status**                  |
+| :-------------: | :----------: | :-----------------------------------------------------------------: | :----------------------------------------------------: | :---------------: | :-----------------------------------------------------------: |
+|     `POST`      |  `/signin`   | User authentication. Returns an access token upon successful login. |                           -                            |         -         |                 `200 OK`, `401 Unauthorized`                  |
+|     `POST`      |  `/signup`   |                         Register a new user                         |                           -                            |         -         |               `201 Created`, `400 Bad Request`                |
+|      `GET`      | `/users/me`  |               Get information about the current user                | `authenticated`, `hasRole`, `addCurrentUserIdToParams` |  `limited_user`   |                   `200 OK`, `403 Forbidden`                   |
+|      `GET`      |   `/users`   |                       Get a list of all users                       |               `authenticated`, `hasRole`               |      `admin`      |                   `200 OK`, `403 Forbidden`                   |
+|      `GET`      | `/users/:id` |            Get user information by ID if the user exists            |               `authenticated`, `hasRole`               |      `admin`      |          `200 OK`, `403 Forbidden`, `404 Not Found`           |
+|     `POST`      |   `/users`   |                          Create a new user                          |               `authenticated`, `hasRole`               |      `admin`      |               `201 Created`, `400  Bad Request`               |
+|      `PUT`      | `/users/:id` |             Update user information if the user exists              |               `authenticated`, `hasRole`               |      `admin`      | `200 OK`, `400 Bad Request`, `403 Forbidden`, `404 Not Found` |
+|    `DELETE`     | `/users/:id` |                         Delete a user by ID                         |               `authenticated`, `hasRole`               |      `admin`      |  `204 No Content`,<br> `403 Forbidden`,<br> `404 Not Found`   |
 
 ## Features
 
